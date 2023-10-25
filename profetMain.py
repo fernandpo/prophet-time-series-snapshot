@@ -4,51 +4,47 @@ from prophet.plot import plot_plotly, plot_components_plotly
 import matplotlib.pyplot as plt
 
 
+def main():
+    # Inicializa a análise de previsão de séries temporais
+    print('Init Fundamentalist Analysis Forecast')
 
-def print_hi(name):
-    print(f'Hi, {name}')
-
-
-if __name__ == '__main__':
-    print_hi('Init Fundamentalist Analysis Forcast')
+    # Caminho do arquivo de dados da ação
     stock_path = 'Data/VALE3.csv'
-    print('Time series forecast for' + stock_path)
+    print('Time series forecast for ' + stock_path)
 
+    # Carrega os dados do arquivo CSV
     df = pd.read_csv(stock_path)
     df.head()
 
+    # Cria uma instância do modelo Prophet
     m = Prophet()
-    train_set = df.iloc[:-10]
-    print('training set')
-    print(train_set)
-    teste_set = df.iloc[-5:]
-    print('teste set')
-    print(teste_set)
-    m.fit(train_set)
 
-    # Analise dos erros -> RMSE
-    # Medidas de erros series temporais
-    # Prophet X Pycaret;
-    # Prophet X Arima (Jupter notebook);
-    # Prophet X Sarima (Jupter Notebook) -> Comparar os Erros, qual modelo esta errando menos;
+    # Ajusta o modelo aos dados
+    m.fit(df)
 
-    # future = m.make_future_dataframe(periods=5)
-    # future.tail()
+    # Gera datas futuras para previsão
+    future = m.make_future_dataframe(periods=6, freq='Q')
+    print(future.tail())
 
-    forecast = m.predict(train_set)
-    # Validar documentacao do m.predict -> devemos passar train_data_set ?;
-    # Recomendacao final - Processo de inicio meio e fim -> Validar ligação do ROE e metricas para recomendar as ações a longo prazo;
+    # Realiza a previsão
+    forecast = m.predict(future)
+    print(forecast.tail())
 
+    # Exibe os resultados da previsão
+    print(forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail())
 
-    # forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail()
-    print(forecast)
-
+    # Plota o gráfico da previsão
     fig1 = m.plot(forecast)
 
+    # Plota componentes da previsão
     fig2 = m.plot_components(forecast)
 
+    # Plota o gráfico interativo usando Plotly
     plot_plotly(m, forecast)
-    # plot_components_plotly(m, forecast)
 
+    # Exibe os gráficos
     plt.show()
 
+
+if __name__ == '__main__':
+    main()

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="913baada-eadd-458e-b3f7-57c0b1baa85d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ARIMA/ARIMA.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profetMain.py" beforeDir="false" afterPath="$PROJECT_DIR$/profetMain.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +83,7 @@
       <option name="presentableId" value="Default" />
       <updated>1696902224645</updated>
       <workItem from="1696902225874" duration="365000" />
-      <workItem from="1697678222827" duration="1900000" />
+      <workItem from="1697678222827" duration="8397000" />
     </task>
     <servers />
   </component>
